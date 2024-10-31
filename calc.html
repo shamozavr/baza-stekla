@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calc</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main-container">
+    <form class="calculator" id="calculator">
+      <h2 class="calculator__header">Рассчитайте стоимость</h2>
+      <div class="calculator__products">
+        <p class="calculator__products-item calculator__products-item--glass calculator__products-item--active">Стекло
+        </p>
+        <p class="calculator__products-item calculator__products-item--mirror">Зеркало</p>
+      </div>
+      <div class="calculator__container calculator__container--types">
+        <fieldset class="calculator__fieldset calculator__fieldset--types">
+          <legend class="calculator__legend calculator__legend--types">Вид</legend>
+          <select class="calculator__select calculator__select--types" name="types" id="types">
+            <option value="Прозрачное">Прозрачное</option>
+            <option value="Сатинное">Сатинное</option>
+            <option value="Тонированное">Тонированное</option>
+          </select>
+        </fieldset>
+      </div>
+      <div class="calculator__container calculator__container--parameters">
+        <fieldset class="calculator__fieldset calculator__fieldset--parameters">
+          <legend class="calculator__legend calculator__legend--parameters">Размеры</legend>
+          <div class="calculator__parameters">
+            <div class="calculator__parameter-wrapper">
+              <input class="calculator__input calculator__input--length" type="number" step="0.001" placeholder="Длина" id="length"
+                name="length" autocomplete="off" required>
+              <select class="calculator__select calculator__select--length" name="length-select" id="length-select">
+                <option value="метр">м</option>
+                <option value="сантиметр">см</option>
+                <option value="миллиметр">мм</option>
+              </select>
+            </div>
+            <div class="calculator__parameter-wrapper">
+              <input class="calculator__input calculator__input--width" type="number" step="0.001" placeholder="Ширина" id="width"
+                name="width" autocomplete="off" required>
+              <select class="calculator__select calculator__select--width" name="width-select" id="width-select">
+                <option value="метр">м</option>
+                <option value="сантиметр">см</option>
+                <option value="миллиметр">мм</option>
+              </select>
+            </div>
+            <div class="calculator__parameter-wrapper">
+              <select class="calculator__select calculator__select--thickness" name="thickness-select"
+                id="thickness-select" required>
+                <option value="" disabled selected hidden>Толщина</option>
+                <option value="3">3 мм</option>
+                <option value="4" id="option_4mm" default>4 мм</option>
+                <option value="5">5 мм</option>
+                <option value="6">6 мм</option>
+                <option value="8">8 мм</option>
+                <option value="10">10 мм</option>
+              </select>
+              <svg class="calculator__select-img" width="28" height="15" viewBox="0 0 28 15" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.91675 1.16667L14.0001 13.25" stroke="black" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+                <path d="M14 13.25L26.0833 1.16667" stroke="black" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+      <div class="calculator__container calculator__container--edge">
+        <fieldset class="calculator__fieldset calculator__fieldset--edge">
+          <legend class="calculator__legend calculator__legend--edge">Обработка кромки</legend>
+          <ul class="calculator__list calculator__list--edge">
+            <!-- <li class="calculator__item">
+              <label class="calculator__control calculator__control--radio">
+                <input class="calculator__control-input" id="edge-type-none" type="radio" name="edge-type" value="Не требуется" checked>
+                <span class="calculator__control-mark calculator__control-mark--radio"></span>
+                <span class="calculator__control-label">Не требуется</span>
+              </label>
+            </li> -->
+            <li class="calculator__item">
+              <label class="calculator__control calculator__control--radio">
+                <input class="calculator__control-input" id="grinding" type="radio" name="edge-type" value="Шлифовка">
+                <span class="calculator__control-mark calculator__control-mark--radio"></span>
+                <span class="calculator__control-label">Шлифовка (Евро)</span>
+              </label>
+            </li>
+            <li class="calculator__item">
+              <label class="calculator__control calculator__control--radio">
+                <input class="calculator__control-input" id="polishing" type="radio" name="edge-type" value="Полировка">
+                <span class="calculator__control-mark calculator__control-mark--radio"></span>
+                <span class="calculator__control-label">Полировка (Евро)</span>
+              </label>
+            </li>
+            <li class="calculator__item">
+              <label class="calculator__control calculator__control--radio">
+                <input class="calculator__control-input" id="facet" type="radio" name="edge-type" value="Фацет">
+                <span class="calculator__control-mark calculator__control-mark--radio"></span>
+                <span class="calculator__control-label">Фацет</span>
+              </label>
+            </li>
+          </ul>
+        </fieldset>
+      </div>
+      <div class="calculator__container calculator__container--additions">
+        <fieldset class="calculator__fieldset calculator__fieldset--additions">
+          <legend class="calculator__legend calculator__legend--additions">Дополнительно</legend>
+          <ul class="calculator__list calculator__list--additions">
+            <li class="calculator__item calculator__item--harding">
+              <label class="calculator__control calculator__control--checkbox">
+                <input class="calculator__control-input" id="harding" type="checkbox" name="harding">
+                <span class="calculator__control-mark calculator__control-mark--checkbox"></span>
+                <span class="calculator__control-label">Закалка</span>
+                <svg class="calculator__control-mark calculator__control-mark--tick" width="24" height="17"
+                  viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M22.925 1.325L21.825 0.225C21.525 -0.075 20.925 -0.075 20.625 0.225L8.725 12.125L2.525 5.925C2.225 5.625 1.625 5.625 1.325 5.925L0.225 7.025C-0.075 7.325 -0.075 7.925 0.225 8.225L8.025 16.025C8.225 16.225 8.425 16.225 8.625 16.225C8.825 16.225 9.025 16.125 9.225 16.025L22.725 2.525C23.225 2.225 23.225 1.725 22.925 1.325Z"
+                    fill="black" />
+                </svg>
+              </label>
+            </li>
+            <li class="calculator__item calculator__item--figure">
+              <div class="calculator__list-wrapper">
+                <label class="calculator__control calculator__control--checkbox calculator__control--figure">
+                  <input class="calculator__control-input" id="figure" type="checkbox" name="figure">
+                  <span class="calculator__control-mark calculator__control-mark--checkbox"></span>
+                  <span class="calculator__control-label">Фигурная резка</span>
+                  <svg class="calculator__control-mark calculator__control-mark--tick" width="24" height="17"
+                    viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M22.925 1.325L21.825 0.225C21.525 -0.075 20.925 -0.075 20.625 0.225L8.725 12.125L2.525 5.925C2.225 5.625 1.625 5.625 1.325 5.925L0.225 7.025C-0.075 7.325 -0.075 7.925 0.225 8.225L8.025 16.025C8.225 16.225 8.425 16.225 8.625 16.225C8.825 16.225 9.025 16.125 9.225 16.025L22.725 2.525C23.225 2.225 23.225 1.725 22.925 1.325Z"
+                      fill="black" />
+                  </svg>
+                </label>
+              </div>
+              <label class="calculator__control calculator__control--file visually-hidden">
+                <div class="calculator__image-wrapper">
+                  <svg class="calculator__image" width="20" height="29" viewBox="0 0 20 29" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M1 19L1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10V22C19 25.3137 16.3137 28 13 28C9.68629 28 7 25.3137 7 22V10C7 8.34315 8.34315 7 10 7C11.6569 7 13 8.34315 13 10L13 22"
+                      stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <input type="file" name="file" id="file" hidden>
+                <span class="calculator__control-label calculator__control-label--file">Приложить макет</br>(если есть)</span>
+              </label>
+            </li>
+            <li class="calculator__item">
+              <label class="calculator__control calculator__control--checkbox">
+                <input class="calculator__control-input" id="holes" type="checkbox" name="holes">
+                <span class="calculator__control-mark calculator__control-mark--checkbox"></span>
+                <span class="calculator__control-label">Отверстия</span>
+                <svg class="calculator__control-mark calculator__control-mark--tick" width="24" height="17"
+                  viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M22.925 1.325L21.825 0.225C21.525 -0.075 20.925 -0.075 20.625 0.225L8.725 12.125L2.525 5.925C2.225 5.625 1.625 5.625 1.325 5.925L0.225 7.025C-0.075 7.325 -0.075 7.925 0.225 8.225L8.025 16.025C8.225 16.225 8.425 16.225 8.625 16.225C8.825 16.225 9.025 16.125 9.225 16.025L22.725 2.525C23.225 2.225 23.225 1.725 22.925 1.325Z"
+                    fill="black" />
+                </svg>
+              </label>
+              <div class="calculator__wrapper-input calculator__wrapper-input--holes-count visually-hidden">
+                <input class="calculator__input calculator__input--holes-count" type="number" placeholder="кол-во"
+                  id="holes-count" name="holes-count" autocomplete="off">
+                <div class="calculator__measure">
+                  <span class="calculator__measure-label">шт</span>
+                </div>
+              </div>
+              <div class="calculator__wrapper-input calculator__wrapper-input--holes-diameter visually-hidden">
+                <input class="calculator__input calculator__input--holes-diameter" type="number" placeholder="диаметр"
+                  id="holes-diameter" name="holes-diameter" autocomplete="off" min="4" max="26">
+                <div class="calculator__measure">
+                  <span class="calculator__measure-label">мм</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </fieldset>
+      </div>
+      <div class="calculator__container calculator__container--total">
+        <fieldset class="calculator__fieldset calculator__fieldset--total">
+          <legend class="calculator__legend calculator__legend--total">Итого</legend>
+          <div class="calculator__wrapper-total">
+            <span class="calculator__total-total">0</span>
+            <span class="calculator__total-currency">₽</span>
+          </div>
+        </fieldset>
+      </div>
+      <div class="calculator__container calculator__container--comment">
+        <div class="calculator__comment">
+          <textarea class="calculator__input calculator__input--comment" type="text" placeholder="Поле для комментариев"
+            id="comment" name="comment" autocomplete="off" rows="4" cols="50"></textarea>
+        </div>
+      </div>
+      <div class="calculator__container-buttons">
+        <!-- <button class="calculator__button calculator__button--add">Добавить в корзину</button> -->
+        <button class="calculator__button calculator__button--order">Подтвердить указанные данные</button>
+      </div>
+    </form>
+  </div>
+  <!-- Модальные окна -->
+  <!--Для отображения модального окна добавьте модификатор "modal--active" (без кавычек) -->
+  <section class="modal modal--submit">
+    <div class="modal__container modal__container--submit">
+      <button class="modal__close modal__close--submit">
+        <svg class="modal__close-icon modal__close-icon--submit" width="23" height="22" viewBox="0 0 23 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="modal__close-icon-path modal__close-icon-path--submit" d="M23 2.77477L20.0991 0L11.5 8.22522L2.9009 0L0 2.77477L8.5991 11L0 19.2252L2.9009 22L11.5 13.7748L20.0991 22L23 19.2252L14.4009 11L23 2.77477Z" fill="black"/>
+          </svg>
+      </button>
+      <h3 class="modal__title modal__title--submit">Оставьте информацию для связи</h3>
+      <input class="modal__input modal__input--first-name" type="text" id="first-name" name="first-name"
+        placeholder="Имя" autocomplete="off" form="calculator">
+      <input class="modal__input modal__input--phone" type="tel" id="phone" name="phone"
+        placeholder="Введите телефон" autocomplete="off" form="calculator" >
+      <div class="modal__wrapper modal__wrapper--submit">
+        <button class="modal__confirm modal__confirm--submit" form="calculator" type="submit">Отправить</button>
+      </div>
+    </div>
+  </section>
+  <!--Для отображения модального окна добавьте модификатор "modal--active" (без кавычек) -->
+  <section class="modal modal--error">
+    <div class="modal__container modal__container--error">
+      <h3 class="modal__title modal__title--error">Ой, что-то пошло не так!</h3>
+      <p class="modal__caption modal__caption--error">Проверьте поля, выделенные красным, скорее всего вы забыли их
+        заполнить</p>
+      <div class="modal__wrapper modal__wrapper--error">
+        <button class="modal__confirm modal__confirm--error">Ок</button>
+      </div>
+    </div>
+  </section>
+  <!--Для отображения модального окна добавьте модификатор "modal--active" (без кавычек) -->
+  <section class="modal modal--ok">
+    <div class="modal__container modal__container--ok">
+      <h3 class="modal__title modal__title--ok">Ваш заказ отправлен!</h3>
+      <p class="modal__caption modal__caption--ok">В ближайшее время с вами свяжется наш специалист</p>
+      <div class="modal__wrapper modal__wrapper--ok">
+        <button class="modal__confirm modal__confirm--ok">Закрыть окно</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Шаблоны списков видов товара -->
+  <template id="glass-options">
+    <select class="calculator__select calculator__select--types" name="types" id="types">
+      <option value="Прозрачное">Прозрачное</option>
+      <option value="Сатинное">Сатинное</option>
+      <option value="Тонированное">Тонированное</option>
+    </select>
+  </template>
+
+  <template id="mirror-options">
+    <select class="calculator__select calculator__select--types" name="types" id="types">
+      <option value="Обычное">Обычное</option>
+      <option value="Antique">Antique</option>
+    </select>
+  </template>
+
+  <!-- Шаблоны доп опций -->
+  <template id="harding-checkbox-template">
+    <li class="calculator__item calculator__item--harding">
+      <label class="calculator__control calculator__control--checkbox">
+        <input class="calculator__control-input" id="harding" type="checkbox" name="harding">
+        <span class="calculator__control-mark calculator__control-mark--checkbox"></span>
+        <span class="calculator__control-label">Закалка</span>
+        <svg class="calculator__control-mark calculator__control-mark--tick" width="24" height="17" viewBox="0 0 24 17"
+          fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M22.925 1.325L21.825 0.225C21.525 -0.075 20.925 -0.075 20.625 0.225L8.725 12.125L2.525 5.925C2.225 5.625 1.625 5.625 1.325 5.925L0.225 7.025C-0.075 7.325 -0.075 7.925 0.225 8.225L8.025 16.025C8.225 16.225 8.425 16.225 8.625 16.225C8.825 16.225 9.025 16.125 9.225 16.025L22.725 2.525C23.225 2.225 23.225 1.725 22.925 1.325Z"
+            fill="black" />
+        </svg>
+      </label>
+    </li>
+  </template>
+
+  <template id="armor-checkbox-template">
+    <li class="calculator__item calculator__item--armor">
+      <label class="calculator__control calculator__control--checkbox">
+        <input class="calculator__control-input" id="armor" type="checkbox" name="armor">
+        <span class="calculator__control-mark calculator__control-mark--checkbox"></span>
+        <span class="calculator__control-label">Бронирование</span>
+        <svg class="calculator__control-mark calculator__control-mark--tick" width="24" height="17" viewBox="0 0 24 17"
+          fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M22.925 1.325L21.825 0.225C21.525 -0.075 20.925 -0.075 20.625 0.225L8.725 12.125L2.525 5.925C2.225 5.625 1.625 5.625 1.325 5.925L0.225 7.025C-0.075 7.325 -0.075 7.925 0.225 8.225L8.025 16.025C8.225 16.225 8.425 16.225 8.625 16.225C8.825 16.225 9.025 16.125 9.225 16.025L22.725 2.525C23.225 2.225 23.225 1.725 22.925 1.325Z"
+            fill="black" />
+        </svg>
+      </label>
+    </li>
+  </template>
+
+  <script src="calc.js"></script>
+</body>
+
+</html>
